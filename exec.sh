@@ -13,7 +13,33 @@ else
 
 
 
-   docker exec -it net1_backend php artisan migrate fresch
-  docker exec -it net1_backend php artisan db:seed
+  docker exec -it net2_backend php artisan migrate fresch
+  docker exec -it net2_backend php artisan db:seed
+
+docker exec -it net2_backend php artisan migrate:fresh --seed
+
+
+docker ps
+
+docker compose up -d --build
+
+docker-compose down
+docker-compose up 
+
+docker compose down -v
+
+docker exec -it net1_frontend sh
+
+
+hp artisan session:table
+
+docker exec -it net1_backend php artisan migrate
 
 docker exec -it net1_backend php artisan migrate:fresh --seed
+
+docker exec -it net1_backend php artisan optimize
+docker exec -it net1_db_mysql mysql -u harryz -p
+
+docker exec -it net1_backend php artisan migrate
+docker exec -it net1_backend php artisan db:seed
+docker exec -it ne

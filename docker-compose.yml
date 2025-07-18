@@ -8,6 +8,7 @@ services:
       - ./backend:/var/www/html
     command: php artisan serve --host=0.0.0.0 --port=8000
     environment:
+      -  DB_CONNECTION=mysql
       - DB_HOST=HooliNetdb           # hier 'db' (Service-Name), nicht 'net1_db'
       - DB_DATABASE=HooliNetdbz
       - DB_USERNAME=harryz
@@ -35,8 +36,8 @@ services:
       - HooliNet
 
   HooliNetdb:
-    image: HoolimysqlImg
-    container_name: net1_db_mysql       # container_name ist ok
+    image: mysql:8.0
+    container_name: net2_db_mysql       # container_name ist ok
     environment:
       MYSQL_DATABASE: HooliNetdbz
       MYSQL_USER: harryz

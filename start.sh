@@ -1,4 +1,20 @@
 
+docker compose down -v
+docker compose up -d --build
+docker exec -it net2_backend php artisan migrate:fresh --seed
+docker exec -it net2_backend php artisan migrate:fresh --seed
+docker exec -it net2_backend php artisan session:table
+docker exec -it net2_backend php artisan migrate
+
+docker exec -it net2_backend sh -c 'echo "" > storage/logs/laravel.log'
+
+docker exec -it net2_backend rm storage/logs/laravel.log
+
+
+
+docker exec -it net2_frontend npm run dev
+
+
 #!/bin/bash
 
 echo "🐳 Starte Docker Compose Umgebung..."
@@ -92,3 +108,7 @@ const routes = [
 export default router;
 EOF
 "
+
+
+
+

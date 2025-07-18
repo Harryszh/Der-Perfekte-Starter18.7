@@ -55,3 +55,40 @@ bash
 Kopieren
 Bearbeiten
 chmod +x start.sh stop.sh db-reset.sh
+
+
+
+
+docker exec -it net2_frontend sh -c "\
+
+cat > /app/src/views/TestiReginestiViue.vue << 'EOF'       <-- aP
+
+<template>
+  
+</template>
+
+<script setup>
+
+</script>
+
+<style scoped>
+
+</style>
+EOF
+" && \
+cat > /app/src/router/index.js << 'EOF'                      <-- aP
+
+import { createRouter, createWebHistory } from 'vue-router';
+import TestiReginestiViue from '../views/TestiReginestiViue.vue';
+
+const routes = [
+  { path: '/', name: 'home', component: () => import('../views/Home.vue') },
+  { path: '/register', name: 'register', component: TestiReginestiViue },
+];
+
+
+});
+
+export default router;
+EOF
+"

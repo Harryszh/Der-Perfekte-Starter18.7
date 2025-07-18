@@ -11,6 +11,7 @@ else
 
   php artisan optimize//
 
+  docker exec -it net1_frontend sh
 
 
   docker exec -it net2_backend php artisan migrate fresch
@@ -28,14 +29,22 @@ docker-compose up
 
 docker compose down -v
 
+
+
 docker exec -it net1_frontend sh
 
+cd /app/src/router
 
-hp artisan session:table
+sed -i "1i import TestiReginestiViue from '../views/TestiReginestiViue.vue';" index.js
+sed -i "/];/i \  { path: '/register', name: 'register', component: TestiReginestiViue }," index.js
 
-docker exec -it net1_backend php artisan migrate
 
-docker exec -it net1_backend php artisan migrate:fresh --seed
+
+
+
+docker exec -it net2_backend php artisan migrate
+
+docker exec -it net2_backend php artisan migrate:fresh --seed
 
 docker exec -it net1_backend php artisan optimize
 docker exec -it net1_db_mysql mysql -u harryz -p

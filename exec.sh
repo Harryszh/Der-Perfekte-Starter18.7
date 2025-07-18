@@ -11,12 +11,14 @@ else
 
   php artisan optimize//
 
+  docker compose down -v
+  docker compose up -d --build
+
   docker exec -it net1_frontend sh
-
-
-  docker exec -it net2_backend php artisan migrate fresch
-  docker exec -it net2_backend php artisan db:seed
-
+  docker exec -it net2_backend php artisan session:table
+  docker exec -it net2_backend php artisan migrate
+  ocker exec -it net2_backend rm storage/logs/laravel.log
+  
 docker exec -it net2_backend php artisan migrate:fresh --seed
 
 
